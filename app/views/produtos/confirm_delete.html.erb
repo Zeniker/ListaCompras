@@ -1,0 +1,10 @@
+<h3>Confirma a exclusão deste produto?</h3>
+
+<%= render 'produto_info' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <a href="<%= produto_path(@produto) %>" data-method="delete"><button class="btn btn-danger fr" role="button" id="save_button">Excluir</button></a>
+<!--    <a href="{% url 'ficha_consulta' %}"><button type="button" role="button" class="btn fr btn-cancelar margin-right" id="cancel_button">Cancelar</button></a>-->
+  </div>
+</div>

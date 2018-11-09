@@ -10,6 +10,27 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="cabecalho rounded">
+        <span class="align-middle align-center"><%= @titulo_pagina %></span>
+      </div>
+      <div class="container menu-vertical rounded">
+        <nav class="navbar flex-column">
+          <%= link_to "Home", root_path, :class => "nav-link" %>
+          <%= link_to "Produtos", produtos_path, :class => "nav-link" %>
+        </nav>
+      </div>
+      <div id="conteudo-pagina" class="rounded">
+        <% if notice %>
+          <div class="alert alert-success alert-dismissible">
+            <%= notice %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

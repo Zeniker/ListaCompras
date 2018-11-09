@@ -1,0 +1,25 @@
+<div class="row secao-botoes">
+  <div class="col-md-12">
+    <a href="<%= new_produto_path %>"><button class="btn btn-success fr" role="button" id="save_button">Incluir</button></a>
+  </div>
+</div>
+
+<table class="table table-light">
+  <thead>
+    <tr>
+      <th class="col-md-5">Nome</th>
+      <th class="col-md-5">Tipo</th>
+      <th class="col-md-2 text-center" colspan="2">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @produtos.each do |produto| %>
+    <tr>
+      <td class="col-md-5"><%= produto.nome %></td>
+      <td class="col-md-5"><%= produto.tipo %></td>
+      <td class="col-md-1"><%= link_to "Editar", edit_produto_path(produto) %></td>
+      <td class="col-md-1"><%= link_to "Excluir", confirm_delete_produto_path(produto) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
