@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     end
   end
 
-
   root 'home#index'
+
+  resources :usuarios do
+    member do
+      get 'confirm_delete'
+    end
+  end
 end

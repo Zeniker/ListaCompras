@@ -1,0 +1,9 @@
+<h3>Confirma a exclusão deste usuário?</h3>
+
+<%= render 'usuario_info' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <a href="<%= usuario_path(@usuario) %>" data-method="delete"><button class="btn btn-danger fr" role="button" id="save_button">Excluir</button></a>
+  </div>
+</div>

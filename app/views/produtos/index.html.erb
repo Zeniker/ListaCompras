@@ -4,22 +4,28 @@
   </div>
 </div>
 
-<table class="table table-light">
-  <thead>
-    <tr>
-      <th class="col-md-5">Nome</th>
-      <th class="col-md-5">Tipo</th>
-      <th class="col-md-2 text-center" colspan="2">Ação</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @produtos.each do |produto| %>
-    <tr>
-      <td class="col-md-5"><%= produto.nome %></td>
-      <td class="col-md-5"><%= produto.tipo %></td>
-      <td class="col-md-1"><%= link_to "Editar", edit_produto_path(produto) %></td>
-      <td class="col-md-1"><%= link_to "Excluir", confirm_delete_produto_path(produto) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<% if @produtos.empty? %>
+  <div class="alert alert-warning">Não há nenhum produto cadastrado</div>
+<% else %>
+  <div class="table-responsive-sm">
+    <table class="table table-light">
+      <thead>
+      <tr>
+        <th class="col-xs-6">Nome</th>
+        <th class="col-xs-6">Tipo</th>
+        <th class="col-xs-2 text-center" colspan="2">Ação</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @produtos.each do |produto| %>
+        <tr>
+          <td class="col-xs-6"><%= produto.nome %></td>
+          <td class="col-xs-6"><%= produto.tipo %></td>
+          <td class="col-xs-1"><%= link_to edit_image_tag, edit_produto_path(produto) %></td>
+          <td class="col-xs-1"><%= link_to delete_image_tag, confirm_delete_produto_path(produto) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

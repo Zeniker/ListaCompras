@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_184456) do
+ActiveRecord::Schema.define(version: 2018_11_13_113058) do
 
   create_table "produtos", force: :cascade do |t|
     t.string "nome"
     t.string "tipo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string "nome"
+    t.string "password"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "login"
+    t.index ["login"], name: "index_usuarios_on_login", unique: true
   end
 
 end

@@ -39,6 +39,9 @@ gem 'jquery-rails'
 # Gem para bootstrap
 gem 'bootstrap', '~> 4.1.3'
 
+#Gem para criptografia de senha
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
