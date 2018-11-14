@@ -1,17 +1,19 @@
 class UsuariosController < ApplicationController
-  Titulo_listagem='Usuários Cadastrados'
-  Titulo_visualizacao='Visualização de Usuário'
-  Titulo_inclusao='Inclusão de Usuário'
-  Titulo_alteracao='Alteração de Usuário'
-  Titulo_exclusao='Exclusão de Usuário'
+  TITULO_LISTAGEM='Usuários Cadastrados'
+  TITULO_VISUALIZACAO='Visualização de Usuário'
+  TITULO_INCLUSAO='Inclusão de Usuário'
+  TITULO_ALTERACAO='Alteração de Usuário'
+  TITULO_EXCLUSAO='Exclusão de Usuário'
+
+  before_action :require_authentication
 
   def index
-    define_titulo_pagina Titulo_listagem
+    define_titulo_pagina TITULO_LISTAGEM
     @usuarios = Usuario.all
   end
 
   def new
-    define_titulo_pagina Titulo_inclusao
+    define_titulo_pagina TITULO_INCLUSAO
     @usuario = Usuario.new
   end
 
@@ -21,7 +23,7 @@ class UsuariosController < ApplicationController
       redirect_to usuarios_path,
                   notice: 'Usuário criado com sucesso!'
     else
-      define_titulo_pagina Titulo_inclusao
+      define_titulo_pagina TITULO_INCLUSAO
       render action: :new
     end
   end
@@ -36,13 +38,13 @@ class UsuariosController < ApplicationController
       redirect_to usuarios_path,
                   notice: 'Usuário atualizado com sucesso'
     else
-      define_titulo_pagina Titulo_alteracao
+      define_titulo_pagina TITULO_ALTERACAO
       render action: :edit
     end
   end
 
   def confirm_delete
-    define_titulo_pagina Titulo_exclusao
+    define_titulo_pagina TITULO_EXCLUSAO
     @usuario = Usuario.find params[:id]
   end
 

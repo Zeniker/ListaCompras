@@ -1,22 +1,24 @@
 class ProdutosController < ApplicationController
-  Titulo_listagem='Produtos Cadastrados'
-  Titulo_visualizacao='Visualização de Produto'
-  Titulo_inclusao='Inclusão de Produto'
-  Titulo_alteracao='Alteração de Produto'
-  Titulo_exclusao='Exclusão de Produto'
+  TITULO_LISTAGEM='Produtos Cadastrados'
+  TITULO_VISUALIZACAO='Visualização de Produto'
+  TITULO_INCLUSAO='Inclusão de Produto'
+  TITULO_ALTERACAO='Alteração de Produto'
+  TITULO_EXCLUSAO='Exclusão de Produto'
+
+  before_action :require_authentication
 
   def index
-    define_titulo_pagina Titulo_listagem
+    define_titulo_pagina TITULO_LISTAGEM
     @produtos = Produto.all
   end
 
   def show
-    define_titulo_pagina Titulo_visualizacao
+    define_titulo_pagina TITULO_VISUALIZACAO
     @produto = Produto.find params[:id]
   end
 
   def new
-    define_titulo_pagina Titulo_inclusao
+    define_titulo_pagina TITULO_INCLUSAO
     @produto = Produto.new
   end
 
@@ -26,13 +28,13 @@ class ProdutosController < ApplicationController
       redirect_to produtos_path,
                   notice: 'Produto criado com sucesso!'
     else
-      define_titulo_pagina Titulo_inclusao
+      define_titulo_pagina TITULO_INCLUSAO
       render action: :new
     end
   end
 
   def edit
-    define_titulo_pagina Titulo_alteracao
+    define_titulo_pagina TITULO_ALTERACAO
     @produto = Produto.find params[:id]
   end
 
@@ -42,13 +44,13 @@ class ProdutosController < ApplicationController
       redirect_to produtos_path,
                   notice: 'Produto atualizado com sucesso'
     else
-      define_titulo_pagina Titulo_alteracao
+      define_titulo_pagina TITULO_ALTERACAO
       render action: :edit
     end
   end
 
   def confirm_delete
-    define_titulo_pagina Titulo_exclusao
+    define_titulo_pagina TITULO_EXCLUSAO
     @produto = Produto.find params[:id]
   end
 
