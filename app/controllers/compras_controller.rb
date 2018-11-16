@@ -1,6 +1,13 @@
 class ComprasController < ApplicationController
+  before_action :require_authentication
 
-  def index
+  def pedidos_abertos
+    define_titulo_pagina 'Pedidos em Aberto'
+    @pedidos = Pedido.get_abertos
+    @compra = Compra.new
+  end
+
+  def pedidos_fechados
     define_titulo_pagina 'Histórico de pedidos'
     @pedidos = Pedido.get_comprados
   end

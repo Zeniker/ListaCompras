@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'home#index'
+  root 'compras#pedidos_abertos'
 
   resources :usuarios do
     member do
@@ -26,7 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :compras, only: [:index, :create]
+  resources :compras, only: [:create]
+  get 'pedidos_fechados', to: 'compras#pedidos_fechados', as: :pedidos_fechados
 
   resource :user_sessions, only: [:create, :new, :destroy]
 end
