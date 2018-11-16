@@ -1,0 +1,31 @@
+<div class="row secao-botoes">
+  <div class="col-md-12">
+    <a href="<%= new_unidade_medida_path %>"><button class="btn btn-success fr" role="button" id="save_button">Incluir</button></a>
+  </div>
+</div>
+
+<% if @unidade_medidas.empty? %>
+  <div class="alert alert-warning">Não há nenhuma unidade de medida cadastrada</div>
+<% else %>
+  <div class="table-responsive-sm">
+    <table class="table table-light">
+      <thead>
+      <tr>
+        <th class="col-md-5">Nome</th>
+        <th class="col-md-5">Sigla</th>
+        <th class="col-md-2 text-center" colspan="2">Ação</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @unidade_medidas.each do |unidade_medida| %>
+        <tr>
+          <td class="col-md-5"><%= unidade_medida.nome %></td>
+          <td class="col-md-5"><%= unidade_medida.sigla %></td>
+          <td class="col-md-1"><%= link_to edit_image_tag, edit_unidade_medida_path(unidade_medida) %></td>
+          <td class="col-md-1"><%= link_to delete_image_tag, confirm_delete_unidade_medida_path(unidade_medida) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

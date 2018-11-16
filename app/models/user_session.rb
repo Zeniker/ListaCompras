@@ -26,7 +26,7 @@ class UserSession
   end
 
   def current_user
-    Usuario.find_by(@session[:usuario_id])
+    Usuario.find(@session[:usuario_id])
   end
 
   def user_signed_in?

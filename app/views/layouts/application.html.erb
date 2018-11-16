@@ -12,11 +12,11 @@
 
   <body>
     <div class="container">
-      <% if @titulo_pagina %>
+      <%# if @titulo_pagina %>
         <div class="cabecalho rounded">
           <span class="align-middle align-center"><%= @titulo_pagina %></span>
         </div>
-      <% end %>
+      <%# end %>
 
       <% if user_signed_in? %>
         <div class="container menu-vertical rounded">
@@ -29,6 +29,8 @@
               <ul class="navbar-nav flex-column mr-auto mt-2 mt-lg-0">
                 <li class="nav-item"><%= link_to "Home", root_path, :class => "nav-link" %></li>
                 <li class="nav-item"><%= link_to "Produtos", produtos_path, :class => "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Pedidos", pedidos_path, :class => "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Unidades de Medida", unidade_medidas_path, :class => "nav-link" %></li>
                 <li class="nav-item"><%= link_to "Usuários", usuarios_path, :class => "nav-link" %></li>
                 <li class="nav-item"><%= link_to "Sair", user_sessions_path, method: :delete, :class => "nav-link" %></li>
               </ul>

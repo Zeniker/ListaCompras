@@ -10,13 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_113058) do
+ActiveRecord::Schema.define(version: 2018_11_16_140839) do
+
+  create_table "pedidos", force: :cascade do |t|
+    t.integer "produto_id"
+    t.integer "usuario_id"
+    t.float "quantidade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "unidade_medida_id"
+    t.integer "comprador_id"
+    t.index ["comprador_id"], name: "index_pedidos_on_comprador_id"
+    t.index ["produto_id"], name: "index_pedidos_on_produto_id"
+    t.index ["unidade_medida_id"], name: "index_pedidos_on_unidade_medida_id"
+    t.index ["usuario_id"], name: "index_pedidos_on_usuario_id"
+  end
 
   create_table "produtos", force: :cascade do |t|
     t.string "nome"
     t.string "tipo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "unidade_medidas", force: :cascade do |t|
+    t.string "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "sigla"
   end
 
   create_table "usuarios", force: :cascade do |t|

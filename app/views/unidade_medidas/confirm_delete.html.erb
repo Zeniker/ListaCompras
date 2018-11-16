@@ -1,0 +1,9 @@
+<h3>Confirma a exclusão desta unidade de medida?</h3>
+
+<%= render 'unidade_medida_info', unidade_medida: @unidade_medida %>
+
+<div class="row">
+  <div class="col-md-12">
+    <a href="<%= unidade_medida_path(@unidade_medida) %>" data-method="delete"><button class="btn btn-danger fr" role="button" id="save_button">Excluir</button></a>
+  </div>
+</div>

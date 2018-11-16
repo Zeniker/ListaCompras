@@ -1,0 +1,17 @@
+<%= render :partial => 'layouts/form_error_list', :locals => {objeto: unidade_medida} %>
+
+<%= form_with(model: unidade_medida, local: true) do |form| %>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :nome %>
+      <%= form.text_field :nome, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label :sigla %>
+      <%= form.text_field :sigla, :class => 'form-control' %>
+    </div>
+    <div class="form-group col-md-12">
+      <%= form.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

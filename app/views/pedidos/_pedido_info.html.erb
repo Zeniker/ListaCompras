@@ -1,0 +1,17 @@
+<ul class="list-group dados-registro">
+  <li class="list-group-item">
+    Produto: <%= pedido.produto.nome %>
+  </li>
+  <li class="list-group-item">
+    Quantidade: <%= "#{pedido.quantidade} #{pedido.unidade_medida.sigla}" %>
+  </li>
+  <li class="list-group-item">
+    Solicitante: <%= pedido.usuario.nome %>
+  </li>
+  <li class="list-group-item">
+    Comprador: <%= pedido.comprador.blank? ? "" : pedido.usuario.nome %>
+  </li>
+</ul>
+
+
+

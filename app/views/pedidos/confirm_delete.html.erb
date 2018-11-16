@@ -1,0 +1,10 @@
+<h3>Confirma a exclusão deste pedido?</h3>
+
+<%= render 'pedido_info', pedido: @pedido %>
+
+<div class="row">
+  <div class="col-md-12">
+    <a href="<%= pedido_path(@pedido) %>" data-method="delete"><button class="btn btn-danger fr" role="button" id="save_button">Excluir</button></a>
+    <a href="<%= pedidos_path %>"><button class="btn btn-success fr margin-right-5" role="button" id="save_button">Voltar</button></a>
+  </div>
+</div>
