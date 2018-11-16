@@ -116,6 +116,10 @@ $mobile-width: 768px;
 
   .cabecalho{
     font-size: 1.2em;
+
+    span{
+      font-size: 1rem;
+    }
   }
 
   .conteudo-pagina{
@@ -125,8 +129,12 @@ $mobile-width: 768px;
     margin-top: 1%;
   }
 
-  .cabecalho span{
-    font-size: 1rem;
+  .table-lista-compras{
+    font-size: 0.8rem;
+
+    .form-check-input{
+      margin-left: -0.5rem;
+    }
   }
   
 }

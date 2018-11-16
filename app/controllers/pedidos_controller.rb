@@ -98,7 +98,7 @@ class PedidosController < ApplicationController
     end
 
     def block_changes_comprado
-      if @pedido.is_pedido_comprado
+      if @pedido.pedido_comprado?
         redirect_to pedidos_path, notice: 'Este pedido já foi comprado e não pode ser alterado/excluído'
       end
     end

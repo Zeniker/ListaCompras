@@ -6,7 +6,27 @@ class Pedido < ApplicationRecord
 
   validates_presence_of :produto_id, :usuario_id, :unidade_medida_id, :quantidade
 
-  def is_pedido_comprado
+  def pedido_comprado?
     not self.comprador.blank?
+  end
+
+  def self.get_abertos
+    Pedido.where(comprador_id: nil)
+        .order(:created_at)
+  end
+
+  def self.get_comprados
+    Pedido.where.not(comprador_id: nil)
+        .order(updated_at: :desc)
+  end
+
+  def self.comprar_pedido(pedidos, usuario_id)
+    pedidos.each do |pedido|
+      pedido = Pedido.find(pedido)
+      unless pedido.pedido_comprado?
+        pedido.comprador_id = usuario_id
+        pedido.save
+      end
+    end
   end
 end

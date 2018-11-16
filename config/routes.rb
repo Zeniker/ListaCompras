@@ -26,5 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :compras, only: [:index, :create]
+
   resource :user_sessions, only: [:create, :new, :destroy]
 end

@@ -1,1 +1,29 @@
-Seje bem vindo
+<% if @pedidos.empty? %>
+  <div class="alert alert-warning">Não há nenhum pedido em aberto</div>
+<% else %>
+  <%= form_with(model: @compra) do |form| %>
+    <div class="table-responsive-sm">
+      <table class="table table-light table-lista-compras">
+        <thead>
+        <tr>
+          <th class="col-md-4">Produto</th>
+          <th class="col-md-3">Quantidade</th>
+          <th class="col-md-3">Solicitante</th>
+          <th class="col-md-2 text-center">*</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @pedidos.each do |pedido| %>
+          <tr>
+            <td class="col-md-4"><%= pedido.produto.nome %></td>
+            <td class="col-md-3"><%= "#{pedido.quantidade} #{pedido.unidade_medida.sigla}" %></td>
+            <td class="col-md-3"><%= pedido.usuario.nome %></td>
+            <td class="col-md-2"><%= check_box_tag "pedidos[]", pedido.id %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= form.submit %>
+  <% end %>
+<% end %>
