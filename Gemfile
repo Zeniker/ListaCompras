@@ -45,6 +45,9 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 #Gem para soft delete
 gem 'discard', '~> 1.0'
 
+#Gem para paginação
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

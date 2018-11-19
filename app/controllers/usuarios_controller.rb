@@ -9,7 +9,7 @@ class UsuariosController < ApplicationController
 
   def index
     define_titulo_pagina TITULO_LISTAGEM
-    @usuarios = Usuario.all
+    @usuarios = Usuario.all.page(params[:page])
   end
 
   def new

@@ -14,7 +14,7 @@ class PedidosController < ApplicationController
   # GET /pedidos.json
   def index
     define_titulo_pagina TITULO_LISTAGEM
-    @pedidos = Pedido.from_user current_user
+    @pedidos = Pedido.from_user(current_user).page(params[:page])
   end
 
   # GET /pedidos/1

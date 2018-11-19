@@ -9,7 +9,7 @@ class ProdutosController < ApplicationController
 
   def index
     define_titulo_pagina TITULO_LISTAGEM
-    @produtos = Produto.all
+    @produtos = Produto.all.page(params[:page])
   end
 
   def show

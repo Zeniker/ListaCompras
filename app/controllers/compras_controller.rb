@@ -9,7 +9,7 @@ class ComprasController < ApplicationController
 
   def pedidos_fechados
     define_titulo_pagina 'Histórico de pedidos'
-    @pedidos = Pedido.get_comprados
+    @pedidos = Pedido.get_comprados.page(params[:page])
   end
 
   def create

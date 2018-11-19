@@ -18,5 +18,9 @@ module Listacompras
 
     config.time_zone = 'Brasilia'
     config.i18n.default_locale = :"pt-BR"
+
+    Kaminari.configure do |config|
+      config.default_per_page = 2
+    end
   end
 end

@@ -12,7 +12,7 @@ class UnidadeMedidasController < ApplicationController
   # GET /unidade_medidas.json
   def index
     define_titulo_pagina TITULO_LISTAGEM
-    @unidade_medidas = UnidadeMedida.all
+    @unidade_medidas = UnidadeMedida.all.page(params[:page])
   end
 
   # GET /unidade_medidas/1
