@@ -52,7 +52,7 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'rolify', '~> 5.2'
 
 #Gem para PostgreSQL
-gem 'pg'
+gem 'pg', '~> 1.1', '>= 1.1.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
