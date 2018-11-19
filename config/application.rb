@@ -20,7 +20,7 @@ module Listacompras
     config.i18n.default_locale = :"pt-BR"
 
     Kaminari.configure do |config|
-      config.default_per_page = 2
+      config.default_per_page = 10
     end
   end
 end

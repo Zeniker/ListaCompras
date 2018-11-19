@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  delegate :current_user, :user_signed_in?, to: :user_session
+  delegate :current_user, :user_signed_in?, :user_has_role, to: :user_session
 
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :user_signed_in?, :user_has_role
 
   def define_titulo_pagina (titulo_pagina)
     @titulo_pagina = titulo_pagina

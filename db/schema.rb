@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_163035) do
+ActiveRecord::Schema.define(version: 2018_11_19_183755) do
+
+  create_table "funcaos", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_funcaos_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_funcaos_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_funcaos_on_resource_type_and_resource_id"
+  end
 
   create_table "pedidos", force: :cascade do |t|
     t.integer "produto_id"
@@ -48,7 +59,17 @@ ActiveRecord::Schema.define(version: 2018_11_19_163035) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "login"
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_usuarios_on_discarded_at"
     t.index ["login"], name: "index_usuarios_on_login", unique: true
+  end
+
+  create_table "usuarios_funcaos", id: false, force: :cascade do |t|
+    t.integer "usuario_id"
+    t.integer "funcao_id"
+    t.index ["funcao_id"], name: "index_usuarios_funcaos_on_funcao_id"
+    t.index ["usuario_id", "funcao_id"], name: "index_usuarios_funcaos_on_usuario_id_and_funcao_id"
+    t.index ["usuario_id"], name: "index_usuarios_funcaos_on_usuario_id"
   end
 
 end

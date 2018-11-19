@@ -6,10 +6,17 @@ class UsuariosController < ApplicationController
   TITULO_EXCLUSAO='Exclusão de Usuário'
 
   before_action :require_authentication
+  before_action :require_admin_role, except: [:index ]
 
   def index
     define_titulo_pagina TITULO_LISTAGEM
-    @usuarios = Usuario.all.page(params[:page])
+    if current_user.has_admin_role?
+      @usuarios = Usuario.kept
+    else
+      @usuarios = Usuario.find_only_current session[:usuario_id]
+    end
+
+    @usuarios.page(params[:page])
   end
 
   def new
@@ -46,11 +53,18 @@ class UsuariosController < ApplicationController
   def confirm_delete
     define_titulo_pagina TITULO_EXCLUSAO
     @usuario = Usuario.find params[:id]
+    if same_user_as_current @usuario
+      redirect_to usuarios_path
+    end
   end
 
   def destroy
     @usuario = Usuario.find params[:id]
-    @usuario.destroy
+    if same_user_as_current @usuario
+      redirect_to usuarios_path
+    end
+
+    @usuario.discard
 
     redirect_to usuarios_path,
                 notice: 'Usuário excluído com sucesso'
@@ -60,5 +74,15 @@ class UsuariosController < ApplicationController
 
   def usuario_params
     params.require(:usuario).permit(:nome, :login, :password, :password_confirmation)
+  end
+
+  def require_admin_role
+    unless current_user.has_admin_role?
+      redirect_to usuarios_path
+    end
+  end
+
+  def same_user_as_current(usuario)
+    current_user.id == usuario.id
   end
 end

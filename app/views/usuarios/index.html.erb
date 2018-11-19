@@ -1,8 +1,10 @@
-<div class="row secao-botoes">
-  <div class="col-md-12">
-    <a href="<%= new_usuario_path %>"><button class="btn btn-success fr" role="button" id="save_button">Incluir</button></a>
-  </div>
+<% if user_has_role :admin %>
+  <div class="row secao-botoes">
+    <div class="col-md-12">
+      <a href="<%= new_usuario_path %>"><button class="btn btn-success fr" role="button" id="save_button">Incluir</button></a>
+    </div>
 </div>
+<% end %>
 
 <% if @usuarios.empty? %>
   <div class="alert alert-warning">Não há nenhum usuário cadastrado</div>
@@ -22,7 +24,9 @@
           <td class="col-md-5"><%= usuario.nome %></td>
           <td class="col-md-5"><%= usuario.login %></td>
           <td class="col-md-1"><%= link_to edit_image_tag, edit_usuario_path(usuario) %></td>
-          <td class="col-md-1"><%= link_to delete_image_tag, confirm_delete_usuario_path(usuario) %></td>
+          <% if user_has_role :admin and usuario.id != current_user.id %>
+            <td class="col-md-1"><%= link_to delete_image_tag, confirm_delete_usuario_path(usuario) %></td>
+          <% end %>
         </tr>
       <% end %>
       </tbody>

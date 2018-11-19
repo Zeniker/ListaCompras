@@ -37,4 +37,13 @@ class UserSession
     @session[:usuario_id] = nil
   end
 
+  def user_has_role(role)
+    if user_signed_in?
+      usuario = current_user
+      usuario.has_role? role
+    else
+      false
+    end
+  end
+
 end
