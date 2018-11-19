@@ -14,7 +14,7 @@ class PedidosController < ApplicationController
   # GET /pedidos.json
   def index
     define_titulo_pagina TITULO_LISTAGEM
-    @pedidos = Pedido.all
+    @pedidos = Pedido.from_user current_user
   end
 
   # GET /pedidos/1
@@ -93,8 +93,8 @@ class PedidosController < ApplicationController
     end
 
     def get_dependencies
-      @produtos = Produto.all
-      @unidade_medidas = UnidadeMedida.all
+      @produtos = Produto.all.order(:nome)
+      @unidade_medidas = UnidadeMedida.all.order(:nome)
     end
 
     def block_changes_comprado

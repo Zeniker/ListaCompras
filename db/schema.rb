@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_140839) do
+ActiveRecord::Schema.define(version: 2018_11_19_163035) do
 
   create_table "pedidos", force: :cascade do |t|
     t.integer "produto_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_140839) do
     t.datetime "updated_at", null: false
     t.integer "unidade_medida_id"
     t.integer "comprador_id"
+    t.datetime "data_compra"
     t.index ["comprador_id"], name: "index_pedidos_on_comprador_id"
     t.index ["produto_id"], name: "index_pedidos_on_produto_id"
     t.index ["unidade_medida_id"], name: "index_pedidos_on_unidade_medida_id"

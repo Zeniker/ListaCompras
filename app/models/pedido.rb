@@ -25,8 +25,14 @@ class Pedido < ApplicationRecord
       pedido = Pedido.find(pedido)
       unless pedido.pedido_comprado?
         pedido.comprador_id = usuario_id
+        pedido.data_compra = Time.now
         pedido.save
       end
     end
+  end
+
+  def self.from_user(usuario_id)
+    Pedido.where(usuario_id: usuario_id)
+        .order(created_at: :desc)
   end
 end

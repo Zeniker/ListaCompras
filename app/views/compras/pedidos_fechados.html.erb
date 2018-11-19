@@ -6,18 +6,20 @@
       <thead>
       <tr>
         <th class="col-md-3">Produto</th>
-        <th class="col-md-3">Quantidade</th>
+        <th class="col-md-2">Quantidade</th>
         <th class="col-md-3">Solicitante</th>
-        <th class="col-md-3">Comprador</th>
+        <th class="col-md-2">Comprador</th>
+        <th class="col-md-2">Data Compra</th>
       </tr>
       </thead>
       <tbody>
       <% @pedidos.each do |pedido| %>
         <tr>
           <td class="col-md-3"><%= pedido.produto.nome %></td>
-          <td class="col-md-3"><%= "#{pedido.quantidade} #{pedido.unidade_medida.sigla}" %></td>
+          <td class="col-md-2"><%= "#{pedido.quantidade} #{pedido.unidade_medida.sigla}" %></td>
           <td class="col-md-3"><%= pedido.usuario.nome %></td>
-          <td class="col-md-3"><%= pedido.comprador.blank? ? "" : pedido.comprador.nome %></td>
+          <td class="col-md-2"><%= pedido.comprador.blank? ? "" : pedido.comprador.nome %></td>
+          <td class="col-md-2"><%= pedido.data_compra %></td>
         </tr>
       <% end %>
       </tbody>
