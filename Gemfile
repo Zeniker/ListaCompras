@@ -49,6 +49,9 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 #Gem para roles
 gem 'rolify', '~> 5.2'
 
+#Gem para select2
+gem 'select2-rails', '~> 4.0', '>= 4.0.3'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -57,7 +60,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   # Use sqlite3 as the database for Active Record
-  # gem 'sqlite3'
+  gem 'sqlite3'
 end
 
 group :development do

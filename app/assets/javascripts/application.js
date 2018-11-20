@@ -16,4 +16,10 @@
 //= require jquery
 //= require popper
 //= require bootstrap
+//= require select2
+//= require select2_locale_"pt-BR"
 //= require_tree
+
+
+$.fn.select2.defaults.set( "theme", "bootstrap" );
+$.fn.select2.defaults.set( "language", "pt-BR" );
