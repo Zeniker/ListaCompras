@@ -23,4 +23,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redirect_with_dependencies(redirect_path)
+    redirect_to redirect_path,
+                alert: 'Este item possui dependências. Não é possível excluí-lo.'
+  end
+
 end

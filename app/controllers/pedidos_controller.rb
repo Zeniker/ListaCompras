@@ -5,10 +5,10 @@ class PedidosController < ApplicationController
   TITULO_ALTERACAO='Alteração de Pedido'
   TITULO_EXCLUSAO='Exclusão de Pedido'
 
-  before_action :set_pedido, only: [:show, :edit, :update, :confirm_delete, :destroy]
   before_action :require_authentication
+  before_action :set_pedido, only: [:show, :edit, :update, :confirm_delete, :destroy]
+  before_action :block_changes_comprado, only: [:edit, :update, :destroy, :confirm_delete]
   before_action :get_dependencies, only: [:new, :create, :edit, :update, :confirm_delete]
-  before_action :block_changes_comprado, only: [:edit, :confirm_delete]
 
   # GET /pedidos
   # GET /pedidos.json
@@ -89,7 +89,7 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:produto_id, :usuario_id, :quantidade, :unidade_medida_id)
+      params.require(:pedido).permit(:produto_id, :quantidade, :unidade_medida_id)
     end
 
     def get_dependencies
@@ -99,7 +99,7 @@ class PedidosController < ApplicationController
 
     def block_changes_comprado
       if @pedido.pedido_comprado?
-        redirect_to pedidos_path, notice: 'Este pedido já foi comprado e não pode ser alterado/excluído'
+        redirect_with_dependencies pedidos_path
       end
     end
 end

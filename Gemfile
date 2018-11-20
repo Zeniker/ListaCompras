@@ -49,9 +49,6 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 #Gem para roles
 gem 'rolify', '~> 5.2'
 
-
-
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

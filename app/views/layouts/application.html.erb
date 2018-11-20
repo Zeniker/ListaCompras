@@ -50,6 +50,14 @@
             </button>
           </div>
         <% end %>
+        <% if alert %>
+          <div class="alert alert-warning alert-dismissible">
+            <%= alert %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>

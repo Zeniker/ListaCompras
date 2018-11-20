@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Instalar o RVM (https://rvm.io/)
 
-Things you may want to cover:
+* A partir dele, instale a versão 2.5.1 do ruby.
 
-* Ruby version
+* Por padrão, a utilização do sqlite está desabilitada. Descomentar a gem para utiliza-lo.
+```ruby
+# gem 'sqlite3'
+```
 
-* System dependencies
+* Na pasta do projeto, rodar o comando abaixo e aguardar.
+```
+$ bundle install
+```
 
-* Configuration
+* Com isso feito, crie o banco de dados
+```
+$ rake db:create
+```
 
-* Database creation
+* Utilizando o rails console, crie um usuário mestre.
+```
+> v = Usuario.new
+> v.nome = 
+> v.login = 
+> v.password
+> v.password_confirmation
+> v.save
+> v.add_role(:admin)
+```
 
-* Database initialization
+* Abra o servidor e entre com os dados do seu usuário. Então seja feliz.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Faltou incluir os testes, terei eles em uma versão futura!
