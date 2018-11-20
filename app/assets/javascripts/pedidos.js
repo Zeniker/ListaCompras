@@ -29,7 +29,7 @@ class Pedido{
     }
 }
 
-$(document).ready(function (){
+$(document).on("turbolinks:load", function() {
     pedido = new Pedido();
 });
 

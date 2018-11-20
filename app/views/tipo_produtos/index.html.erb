@@ -1,0 +1,29 @@
+<div class="row secao-botoes">
+  <div class="col-md-12">
+    <a href="<%= new_tipo_produto_path %>"><button class="btn btn-success fr" role="button" id="save_button">Incluir</button></a>
+  </div>
+</div>
+
+<% if @tipo_produtos.empty? %>
+  <div class="alert alert-warning">Não há nenhum produto cadastrado</div>
+<% else %>
+  <div class="table-responsive-sm">
+    <table class="table table-light">
+      <thead>
+      <tr>
+        <th class="col-md-10">Nome</th>
+        <th class="col-md-2 text-center" colspan="2">Ação</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @tipo_produtos.each do |tipo_produto| %>
+        <tr>
+          <td class="col-md-10"><%= tipo_produto.nome %></td>
+          <td class="col-md-1"><%= link_to edit_image_tag, edit_tipo_produto_path(tipo_produto) %></td>
+          <td class="col-md-1"><%= link_to delete_image_tag, confirm_delete_tipo_produto_path(tipo_produto) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

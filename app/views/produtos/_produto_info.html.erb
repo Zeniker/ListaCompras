@@ -3,7 +3,7 @@
     Nome: <%= @produto.nome %>
   </li>
   <li class="list-group-item">
-    Tipo: <%= @produto.tipo %>
+    Tipo: <%= @produto.tipo_produto.blank? ? "" : @produto.tipo_produto.nome %>
   </li>
 </ul>
 

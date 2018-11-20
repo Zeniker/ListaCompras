@@ -5,7 +5,7 @@
   <div class="row">
     <div class="form-group col-md-12">
       <%= form.label :produto_id %>
-      <%= form.select :produto_id, @produtos.all.collect {|p| [p.nome, p.id]}, {}, {:class => 'form-control'} %>
+      <%= form.select :produto_id, @produtos.collect {|p| [p.nome, p.id]}, {}, {:class => 'form-control'} %>
     </div>
 
     <div class="form-group col-md-6">
@@ -15,7 +15,7 @@
 
     <div class="form-group col-md-6">
       <%= form.label :unidade_medida_id %>
-      <%= form.select :unidade_medida_id, @unidade_medidas.all.collect {|p| [p.nome, p.id]}, {},
+      <%= form.select :unidade_medida_id, @unidade_medidas.collect {|p| [p.nome, p.id]}, {},
                       {:class => 'form-control'} %>
     </div>
 

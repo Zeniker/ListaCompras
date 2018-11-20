@@ -8,6 +8,7 @@ class ProdutosController < ApplicationController
   before_action :require_authentication
   before_action :set_produto, only: [:show, :edit, :update, :confirm_delete, :destroy]
   before_action :check_dependencies, only: [:confirm_delete, :destroy]
+  before_action :get_dependencies, only: [:new, :create, :edit, :update, :confirm_delete]
 
   def index
     define_titulo_pagina TITULO_LISTAGEM
@@ -61,18 +62,22 @@ class ProdutosController < ApplicationController
 
   private
 
-  def set_produto
-    @produto = Produto.find params[:id]
-  end
-
-  def produto_params
-    params.require(:produto).permit(:nome, :tipo)
-  end
-
-  def check_dependencies
-    if @produto.has_pedido?
-      redirect_with_dependencies produtos_path
+    def set_produto
+      @produto = Produto.find params[:id]
     end
-  end
+
+    def produto_params
+      params.require(:produto).permit(:nome, :tipo_produto_id)
+    end
+
+    def check_dependencies
+      if @produto.has_pedido?
+        redirect_with_dependencies produtos_path
+      end
+    end
+
+    def get_dependencies
+      @tipo_produtos = TipoProduto.all.order(:nome)
+    end
 
 end
