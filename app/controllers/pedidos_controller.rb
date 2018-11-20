@@ -76,7 +76,7 @@ class PedidosController < ApplicationController
   def destroy
     @pedido.destroy
     respond_to do |format|
-      format.html { redirect_to pedidos_url, notice: 'Pedido excluído.' }
+      format.html { redirect_to pedidos_url, notice: 'Pedido excluído com sucesso.' }
       format.json { head :no_content }
     end
   end

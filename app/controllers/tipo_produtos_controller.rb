@@ -36,7 +36,7 @@ class TipoProdutosController < ApplicationController
 
     respond_to do |format|
       if @tipo_produto.save
-        format.html { redirect_to @tipo_produto, notice: 'Tipo produto was successfully created.' }
+        format.html { redirect_to @tipo_produto, notice: 'Tipo de Produto criado com sucesso.' }
         format.json { render :show, status: :created, location: @tipo_produto }
       else
         define_titulo_pagina TITULO_INCLUSAO
@@ -56,7 +56,7 @@ class TipoProdutosController < ApplicationController
   def update
     respond_to do |format|
       if @tipo_produto.update(tipo_produto_params)
-        format.html { redirect_to @tipo_produto, notice: 'Tipo produto was successfully updated.' }
+        format.html { redirect_to @tipo_produto, notice: 'Tipo de Produto alterado com sucesso.' }
         format.json { render :show, status: :ok, location: @tipo_produto }
       else
         define_titulo_pagina TITULO_ALTERACAO
@@ -76,7 +76,7 @@ class TipoProdutosController < ApplicationController
   def destroy
     @tipo_produto.destroy
     respond_to do |format|
-      format.html { redirect_to tipo_produtos_url, notice: 'Tipo produto was successfully destroyed.' }
+      format.html { redirect_to tipo_produtos_url, notice: 'Tipo de Produto excluído com sucesso.' }
       format.json { head :no_content }
     end
   end
