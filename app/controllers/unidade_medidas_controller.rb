@@ -5,8 +5,9 @@ class UnidadeMedidasController < ApplicationController
   TITULO_ALTERACAO='Alteração de Unidade de Medida'
   TITULO_EXCLUSAO='Exclusão de Unidade de Medida'
 
-  before_action :set_unidade_medida, only: [:show, :edit, :update, :destroy, :confirm_delete]
   before_action :require_authentication
+  before_action :set_unidade_medida, only: [:show, :edit, :update, :destroy, :confirm_delete]
+  before_action :check_dependencies, only: [:confirm_delete, :destroy]
 
   # GET /unidade_medidas
   # GET /unidade_medidas.json
@@ -87,5 +88,11 @@ class UnidadeMedidasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def unidade_medida_params
       params.require(:unidade_medida).permit(:nome, :sigla)
+    end
+
+    def check_dependencies
+      if @unidade_medida.has_pedido?
+        redirect_with_dependencies unidade_medida_path
+      end
     end
 end

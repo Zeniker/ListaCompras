@@ -6,6 +6,8 @@ class ProdutosController < ApplicationController
   TITULO_EXCLUSAO='Exclusão de Produto'
 
   before_action :require_authentication
+  before_action :set_produto, only: [:show, :edit, :update, :confirm_delete, :destroy]
+  before_action :check_dependencies, only: [:confirm_delete, :destroy]
 
   def index
     define_titulo_pagina TITULO_LISTAGEM
@@ -14,7 +16,6 @@ class ProdutosController < ApplicationController
 
   def show
     define_titulo_pagina TITULO_VISUALIZACAO
-    @produto = Produto.find params[:id]
   end
 
   def new
@@ -35,11 +36,9 @@ class ProdutosController < ApplicationController
 
   def edit
     define_titulo_pagina TITULO_ALTERACAO
-    @produto = Produto.find params[:id]
   end
 
   def update
-    @produto = Produto.find params[:id]
     if @produto.update produto_params
       redirect_to produtos_path,
                   notice: 'Produto atualizado com sucesso'
@@ -51,20 +50,29 @@ class ProdutosController < ApplicationController
 
   def confirm_delete
     define_titulo_pagina TITULO_EXCLUSAO
-    @produto = Produto.find params[:id]
   end
 
   def destroy
-    @produto = Produto.find params[:id]
-    @produto.destroy
+      @produto.destroy
 
-    redirect_to produtos_path,
-                notice: 'Produto excluído com sucesso'
+      redirect_to produtos_path,
+                  notice: 'Produto excluído com sucesso'
   end
 
   private
 
+  def set_produto
+    @produto = Produto.find params[:id]
+  end
+
   def produto_params
     params.require(:produto).permit(:nome, :tipo)
   end
+
+  def check_dependencies
+    if @produto.has_pedido?
+      redirect_with_dependencies produtos_path
+    end
+  end
+
 end

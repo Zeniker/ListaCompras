@@ -5,4 +5,9 @@ class Produto < ApplicationRecord
   def concat_nome_tipo
     "#{nome} - #{tipo}"
   end
+
+  def has_pedido?
+    pedidos = Pedido.where(:produto_id => self.id)
+    not pedidos.empty?
+  end
 end
