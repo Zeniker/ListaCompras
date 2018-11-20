@@ -1,10 +1,8 @@
 class Produto < ApplicationRecord
-  validates_presence_of :nome, :tipo
-  validates_length_of :nome, maximum: 100, allow_blank: false
+  belongs_to :tipo_produto
 
-  def concat_nome_tipo
-    "#{nome} - #{tipo}"
-  end
+  validates_presence_of :nome, :tipo_produto_id
+  validates_length_of :nome, maximum: 100, allow_blank: false
 
   def has_pedido?
     pedidos = Pedido.where(:produto_id => self.id)

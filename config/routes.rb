@@ -1,5 +1,10 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  resources :tipo_produtos do
+    member do
+      get 'confirm_delete'
+    end
+  end
   resources :unidade_medidas do
     member do
       get 'confirm_delete'

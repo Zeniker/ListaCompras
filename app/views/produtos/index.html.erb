@@ -20,7 +20,7 @@
       <% @produtos.each do |produto| %>
         <tr>
           <td class="col-md-6"><%= produto.nome %></td>
-          <td class="col-md-6"><%= produto.tipo %></td>
+          <td class="col-md-6"><%= produto.tipo_produto.blank? ? "" : produto.tipo_produto.nome %></td>
           <td class="col-md-1"><%= link_to edit_image_tag, edit_produto_path(produto) %></td>
           <td class="col-md-1"><%= link_to delete_image_tag, confirm_delete_produto_path(produto) %></td>
         </tr>

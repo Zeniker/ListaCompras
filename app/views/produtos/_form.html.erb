@@ -1,26 +1,18 @@
-<% if @produto.errors.any? %>
-  <div id="error_explanation">
-    <h2>Não foi possível completar a ação. Os seguintes erros foram encontrados:</h2>
-    <ul>
-      <% @produto.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render :partial => 'layouts/form_error_list', :locals => {objeto: @produto} %>
 
-<%= form_for @produto do |f| %>
+<%= form_with(model: @produto, local: true) do |form| %>
   <div class="row">
     <div class="form-group col-md-6">
-      <%= f.label :nome %>
-      <%= f.text_field :nome, :class => "form-control" %>
+      <%= form.label :nome %>
+      <%= form.text_field :nome, :class => "form-control" %>
     </div>
     <div class="form-group col-md-6">
-      <%= f.label :tipo %>
-      <%= f.text_field :tipo, :class => "form-control" %>
+      <%= form.label :tipo_produto_id %>
+      <%= form.select :tipo_produto_id, @tipo_produtos.collect {|p| [p.nome, p.id]}, {},
+                      {:class => 'form-control'} %>
     </div>
     <div class="form-group col-md-12">
-      <%= f.submit :class => "btn btn-primary" %>
+      <%= form.submit :class => "btn btn-primary" %>
     </div>
   </div>
 <% end %>

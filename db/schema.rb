@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_183755) do
+ActiveRecord::Schema.define(version: 2018_11_20_160145) do
 
   create_table "funcaos", force: :cascade do |t|
     t.string "name"
@@ -40,7 +40,14 @@ ActiveRecord::Schema.define(version: 2018_11_19_183755) do
 
   create_table "produtos", force: :cascade do |t|
     t.string "nome"
-    t.string "tipo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "tipo_produto_id"
+    t.index ["tipo_produto_id"], name: "index_produtos_on_tipo_produto_id"
+  end
+
+  create_table "tipo_produtos", force: :cascade do |t|
+    t.string "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
