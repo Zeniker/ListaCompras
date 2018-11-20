@@ -4,6 +4,7 @@ class Pedido{
         this._quantidade = $("#pedido_quantidade");
         this._unidade_medida = $("#pedido_unidade_medida_id");
         this.set_masks();
+        this.set_select2();
     }
 
     get quantidade(){
@@ -20,6 +21,11 @@ class Pedido{
             rightAlign: false,
             oncleared: function () { self.Value(''); }
         });
+    }
+
+    set_select2(){
+        this._produto.select2();
+        this._unidade_medida.select2();
     }
 }
 
