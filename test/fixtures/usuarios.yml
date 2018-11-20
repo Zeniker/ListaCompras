@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
-  password: MyString
-  password_digest: MyString
+  nome: Guilherme
+  password: 123321
+  login: guilopes
+  discarded_at:
 
 two:
-  nome: MyString
-  password: MyString
-  password_digest: MyString
+  nome: Rafael
+  password: 123456
+  login: rafa
+  discarded_at:

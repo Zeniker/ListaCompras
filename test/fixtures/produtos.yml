@@ -2,8 +2,8 @@
 
 one:
   nome: MyString
-  tipo: MyString
+  tipo_produto: one
 
 two:
   nome: MyString
-  tipo: MyString
+  tipo_produto: two
