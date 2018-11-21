@@ -9,9 +9,15 @@
 # gem 'sqlite3'
 ```
 
-* Na pasta do projeto, rodar o comando abaixo e aguardar.
+* Na pasta do projeto, rodar os comando abaixo e aguardar.
 ```
+$ sudo apt-get install libpq-dev
 $ bundle install
+```
+
+* Rode os testes para ver se está tudo ok
+```
+rake
 ```
 
 * Com isso feito, crie o banco de dados

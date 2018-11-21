@@ -1,7 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
+  id: 1
+  nome: Litro
+  sigla: lt
 
 two:
-  nome: MyString
+  id: 2
+  nome: Kilograma
+  sigla: kl

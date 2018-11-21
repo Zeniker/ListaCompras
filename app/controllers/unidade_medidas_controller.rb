@@ -92,7 +92,7 @@ class UnidadeMedidasController < ApplicationController
 
     def check_dependencies
       if @unidade_medida.has_pedido?
-        redirect_with_dependencies unidade_medida_path
+        redirect_with_dependencies unidade_medidas_path
       end
     end
 end

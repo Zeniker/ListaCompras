@@ -3,8 +3,10 @@ class Usuario < ApplicationRecord
 
   rolify :role_cname => 'Funcao'
   validates_presence_of :nome, :password, :login
-  validates_length_of :login, minimum: 5
-  validates_length_of :password, minimum: 5
+  validates_length_of :login, minimum: 5, maximum: 20
+  validates_length_of :password, minimum: 5, maximum: 20
+  validates_length_of :nome, maximum: 50
+  validates_uniqueness_of :login
   after_create :assign_default_role
 
   has_secure_password
@@ -22,9 +24,5 @@ class Usuario < ApplicationRecord
 
   def has_admin_role?
     self.has_role? :admin
-  end
-
-  def self.find_only_current(id)
-    self.where(id: id)
   end
 end

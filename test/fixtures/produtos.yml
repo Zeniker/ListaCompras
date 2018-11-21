@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
-  tipo: MyString
+  id: 1
+  nome: Massa Parafuso
+  tipo_produto_id: 1
 
 two:
-  nome: MyString
-  tipo: MyString
+  id: 2
+  nome: Pasta de Dente
+  tipo_produto_id: 2

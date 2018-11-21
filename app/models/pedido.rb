@@ -20,15 +20,19 @@ class Pedido < ApplicationRecord
         .order(updated_at: :desc)
   end
 
-  def self.comprar_pedido(pedidos, usuario_id)
-    pedidos.each do |pedido|
+  def self.comprar_pedidos(pedidos_id, usuario_id)
+    pedidos_id.each do |pedido|
       pedido = Pedido.find(pedido)
       unless pedido.pedido_comprado?
-        pedido.comprador_id = usuario_id
-        pedido.data_compra = Time.now
-        pedido.save
+        pedido.compra_pedido usuario_id
       end
     end
+  end
+
+  def compra_pedido(usuario_id)
+    self.comprador_id = usuario_id
+    self.data_compra = Time.now
+    self.save
   end
 
   def self.from_user(usuario_id)
