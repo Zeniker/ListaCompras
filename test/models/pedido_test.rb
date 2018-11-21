@@ -1,13 +1,13 @@
 require 'test_helper'
+require 'pp'
 
 class PedidoTest < ActiveSupport::TestCase
   setup do
     @pedido = Pedido.new
-    @pedido.id = 3
     @pedido.unidade_medida_id = 1
     @pedido.usuario_id = 1
     @pedido.produto_id = 1
-    @pedido.quantidade = 50
+    @pedido.quantidade = 50.0
   end
 
   test "validates presence of fields" do
@@ -20,9 +20,18 @@ class PedidoTest < ActiveSupport::TestCase
                   :quantidade], @pedido.errors.keys
   end
 
+  test "should save" do
+    assert @pedido.save, @pedido.errors.full_messages.inspect
+  end
+
+  test "validates compra_pedido" do
+    @pedido.save
+    assert @pedido.compra_pedido(1), @pedido.errors.full_messages.inspect
+  end
+
   test "validates pedido_comprado?" do
     assert_not @pedido.pedido_comprado?
-    @pedido.comprador_id = 1
+    @pedido.compra_pedido 1
     assert @pedido.pedido_comprado?
   end
 

@@ -7,7 +7,7 @@ class Pedido < ApplicationRecord
   validates_presence_of :produto_id, :usuario_id, :unidade_medida_id, :quantidade
 
   def pedido_comprado?
-    not self.comprador_id.blank?
+    not self.comprador.blank?
   end
 
   def self.get_abertos
@@ -24,11 +24,15 @@ class Pedido < ApplicationRecord
     pedidos_id.each do |pedido|
       pedido = Pedido.find(pedido)
       unless pedido.pedido_comprado?
-        pedido.comprador_id = usuario_id
-        pedido.data_compra = Time.now
-        pedido.save
+        pedido.compra_pedido usuario_id
       end
     end
+  end
+
+  def compra_pedido(usuario_id)
+    self.comprador_id = usuario_id
+    self.data_compra = Time.now
+    self.save
   end
 
   def self.from_user(usuario_id)
