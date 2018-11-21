@@ -40,12 +40,13 @@ class ProdutosController < ApplicationController
   end
 
   def update
+    puts produto_params
     if @produto.update produto_params
       redirect_to produtos_path,
                   notice: 'Produto atualizado com sucesso'
     else
       define_titulo_pagina TITULO_ALTERACAO
-      render action: :edit
+      render :edit
     end
   end
 
