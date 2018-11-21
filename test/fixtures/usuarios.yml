@@ -3,7 +3,6 @@
 one:
   id: 1
   nome: Guilherme
-  password: 123321
   login: guilopes
   password_digest: <%= BCrypt::Password.create('123321') %>
   discarded_at:
@@ -11,7 +10,6 @@ one:
 two:
   id: 2
   nome: Rafael
-  password: 123456
   login: rafael
   password_digest: <%= BCrypt::Password.create('123456') %>
   discarded_at:

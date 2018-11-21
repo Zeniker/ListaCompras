@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class TipoProdutoTest < ActiveSupport::TestCase
+  include ProdutoHelper
+
   setup do
     @tipo_produto = TipoProduto.new
     @tipo_produto.nome = "Comida"
@@ -22,5 +24,11 @@ class TipoProdutoTest < ActiveSupport::TestCase
 
   test "should create" do
     assert @tipo_produto.save
+  end
+
+  test "should have produto" do
+    @tipo_produto.save
+    create_new_produto TipoProduto.last.id
+    assert @tipo_produto.has_produto?
   end
 end

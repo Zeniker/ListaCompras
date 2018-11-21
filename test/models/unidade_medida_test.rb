@@ -30,7 +30,7 @@ class UnidadeMedidaTest < ActiveSupport::TestCase
     assert @unidade_medida.valid?
   end
 
-  test "validates has_pedido" do
+  test "should have pedido" do
     unidade_medida = unidade_medidas(:one)
     assert unidade_medida.has_pedido?
   end

@@ -15,6 +15,7 @@ class UserSession
 
     if user.present?
       store(user)
+      true
     else
       errors.add(:base, :invalid_login)
       false
