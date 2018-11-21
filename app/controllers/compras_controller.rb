@@ -13,7 +13,7 @@ class ComprasController < ApplicationController
   end
 
   def create
-    Pedido.comprar_pedido params[:pedidos], current_user.id
+    Pedido.comprar_pedidos params[:pedidos], current_user.id
     redirect_to root_path, notice: 'Compra realizada com sucesso'
   end
 end

@@ -15,7 +15,7 @@ class UsuariosController < ApplicationController
     if current_user.has_admin_role?
       @usuarios = Usuario.kept
     else
-      @usuarios = Usuario.find_only_current session[:usuario_id]
+      @usuarios = Usuario.find_by_as_array :id, session[:usuario_id]
     end
 
     @usuarios.page(params[:page])
