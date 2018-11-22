@@ -28,7 +28,7 @@ class TipoProdutoTest < ActiveSupport::TestCase
 
   test "should have produto" do
     @tipo_produto.save
-    create_new_produto TipoProduto.last.id
+    create_new_produto(TipoProduto.last.id).save
     assert @tipo_produto.has_produto?
   end
 end

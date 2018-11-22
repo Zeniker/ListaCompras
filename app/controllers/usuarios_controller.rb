@@ -61,12 +61,12 @@ class UsuariosController < ApplicationController
   def destroy
     if same_user_as_current @usuario
       redirect_to usuarios_path
+    else
+      @usuario.discard
+
+      redirect_to usuarios_path,
+                  notice: 'Usuário excluído com sucesso'
     end
-
-    @usuario.discard
-
-    redirect_to usuarios_path,
-                notice: 'Usuário excluído com sucesso'
   end
 
   private

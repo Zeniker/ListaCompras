@@ -22,3 +22,12 @@ three:
   usuario_id: 2
   unidade_medida_id: 2
   quantidade: 3.5
+
+four:
+  id: 4
+  produto_id: 2
+  usuario_id: 2
+  unidade_medida_id: 1
+  quantidade: 5
+  comprador_id: 1
+  data_compra: <%= Time.now %>

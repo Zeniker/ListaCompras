@@ -5,7 +5,7 @@ class UnidadeMedidasControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @unidade_medida = unidade_medidas(:one)
-    @nova_unidade_medida = create_new_unidade_medida
+    @nova_unidade_medida = save_new_unidade_medida
     sign_in_as_default
   end
 

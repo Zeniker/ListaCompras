@@ -1,6 +1,7 @@
 class ComprasController < ApplicationController
   before_action :require_authentication
 
+  #root_path
   def pedidos_abertos
     define_titulo_pagina 'Pedidos em Aberto'
     @pedidos = Pedido.get_abertos
