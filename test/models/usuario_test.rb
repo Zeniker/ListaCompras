@@ -99,4 +99,11 @@ class UsuarioTest < ActiveSupport::TestCase
     assert @usuario.has_admin_role?
   end
 
+  test "should discard" do
+    @usuario.save
+    @usuario.discard
+
+    assert Usuario.last.discarded?
+  end
+
 end

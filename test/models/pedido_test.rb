@@ -37,14 +37,12 @@ class PedidoTest < ActiveSupport::TestCase
 
   test "validates comprar_pedidos" do
     pedidos_id = []
-    pedidos_id.push(pedidos(:one).id)
-    pedidos_id.push(pedidos(:three).id)
+    pedidos_id << (pedidos(:one).id)
+    pedidos_id << (pedidos(:three).id)
     Pedido.comprar_pedidos(pedidos_id, 1)
 
-    pedido = Pedido.find(pedidos(:one).id)
-    assert pedido.pedido_comprado?
-
-    pedido = Pedido.find(pedidos(:three).id)
-    assert pedido.pedido_comprado?
+    pedidos_id.each do |id|
+      assert Pedido.find(id).pedido_comprado?
+    end
   end
 end

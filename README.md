@@ -37,6 +37,3 @@ $ rake db:create
 ```
 
 * Abra o servidor e entre com os dados do seu usuário. Então seja feliz.
-
-
-### Faltou incluir os testes, terei eles em uma versão futura!
