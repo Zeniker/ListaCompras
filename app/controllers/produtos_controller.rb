@@ -40,7 +40,6 @@ class ProdutosController < ApplicationController
   end
 
   def update
-    puts produto_params
     if @produto.update produto_params
       redirect_to produtos_path,
                   notice: 'Produto atualizado com sucesso'
