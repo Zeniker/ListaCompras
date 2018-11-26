@@ -24,12 +24,12 @@ class Pedido < ApplicationRecord
     pedidos_id.each do |pedido|
       pedido = Pedido.find(pedido)
       unless pedido.pedido_comprado?
-        pedido.compra_pedido usuario_id
+        pedido.comprar_pedido usuario_id
       end
     end
   end
 
-  def compra_pedido(usuario_id)
+  def comprar_pedido(usuario_id)
     self.comprador_id = usuario_id
     self.data_compra = Time.now
     self.save

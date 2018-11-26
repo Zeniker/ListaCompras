@@ -19,7 +19,7 @@
           <td class="col-md-2"><%= "#{pedido.quantidade} #{pedido.unidade_medida.sigla}" %></td>
           <td class="col-md-3"><%= pedido.usuario.nome %></td>
           <td class="col-md-2"><%= pedido.comprador.blank? ? "" : pedido.comprador.nome %></td>
-          <td class="col-md-2"><%= pedido.data_compra %></td>
+          <td class="col-md-2"><%= I18n.localize pedido.data_compra, format: :simple %></td>
         </tr>
       <% end %>
       </tbody>
