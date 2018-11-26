@@ -27,7 +27,7 @@ class ProdutosController < ApplicationController
   def create
     @produto = Produto.new produto_params
     if @produto.save
-      redirect_to produtos_path,
+      redirect_to @produto,
                   notice: 'Produto criado com sucesso!'
     else
       define_titulo_pagina TITULO_INCLUSAO
@@ -41,7 +41,7 @@ class ProdutosController < ApplicationController
 
   def update
     if @produto.update produto_params
-      redirect_to produtos_path,
+      redirect_to @produto,
                   notice: 'Produto atualizado com sucesso'
     else
       define_titulo_pagina TITULO_ALTERACAO

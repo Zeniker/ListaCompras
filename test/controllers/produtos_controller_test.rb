@@ -23,7 +23,7 @@ class ProdutosControllerTest < ActionDispatch::IntegrationTest
       post produtos_url, params: create_params_produto(@produto)
     end
 
-    assert_redirected_to produtos_url
+    assert_redirected_to produto_url(Produto.last)
   end
 
   test "should get edit" do
@@ -33,7 +33,7 @@ class ProdutosControllerTest < ActionDispatch::IntegrationTest
 
   test "should update produto" do
     patch produto_url(@produto), params: create_params_produto(@produto)
-    assert_redirected_to produtos_url
+    assert_redirected_to produto_url(@produto)
   end
 
   test "should get confirm_delete" do

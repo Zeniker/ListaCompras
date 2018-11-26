@@ -26,12 +26,12 @@ class PedidoTest < ActiveSupport::TestCase
 
   test "validates compra_pedido" do
     @pedido.save
-    assert @pedido.compra_pedido(1), @pedido.errors.full_messages.inspect
+    assert @pedido.comprar_pedido(1), @pedido.errors.full_messages.inspect
   end
 
   test "validates pedido_comprado?" do
     assert_not @pedido.pedido_comprado?
-    @pedido.compra_pedido 1
+    @pedido.comprar_pedido 1
     assert @pedido.pedido_comprado?
   end
 

@@ -40,7 +40,7 @@ class UnidadeMedidasController < ApplicationController
 
     respond_to do |format|
       if @unidade_medida.save
-        format.html { redirect_to @unidade_medida, notice: 'Unidade medida was successfully created.' }
+        format.html { redirect_to @unidade_medida, notice: 'Unidade de medida criada com sucesso.' }
         format.json { render :show, status: :created, location: @unidade_medida }
       else
         define_titulo_pagina TITULO_INCLUSAO
@@ -55,7 +55,7 @@ class UnidadeMedidasController < ApplicationController
   def update
     respond_to do |format|
       if @unidade_medida.update(unidade_medida_params)
-        format.html { redirect_to @unidade_medida, notice: 'Unidade medida was successfully updated.' }
+        format.html { redirect_to @unidade_medida, notice: 'Unidade de medida alterada com sucesso.' }
         format.json { render :show, status: :ok, location: @unidade_medida }
       else
         define_titulo_pagina TITULO_ALTERACAO
@@ -74,7 +74,7 @@ class UnidadeMedidasController < ApplicationController
   def destroy
     @unidade_medida.destroy
     respond_to do |format|
-      format.html { redirect_to unidade_medidas_url, notice: 'Unidade medida was successfully destroyed.' }
+      format.html { redirect_to unidade_medidas_url, notice: 'Unidade de medida excluída com sucesso.' }
       format.json { head :no_content }
     end
   end
